@@ -20,6 +20,8 @@ REST-ful resources by convention followed a `noun` _(URL endpoint)_ / `verb` _(H
 
 Javascript Object Notation, otherwise known as _JSON_, was leveraged as a payload delivery mechanism for both `requests` and `responses` of the API calls. JSON is a human readable, `key:value` format, that was realively easy to consume in a human-readable format, with standard syntax for complex data structues such as Ojects and Arrays that __far__ easier to work with than _XML_; and was lighter and more efficient to transport over the network. 
 
+--------
+
 ## So why not stick with REST? 
 
 So if REST solved all these problems, and is so much better than its predecessor then, the obvious question is...
@@ -40,6 +42,9 @@ Aside from being _chatty_ another limitation to REST is that the multiple resour
 
 To overcome the multiple request problem, and the middleware problem, Developers can get very creative with the URL endpoint construction. Developers will utilize resource paths that blend multiple resources (e.g. Users & Posts) query parameters to execute a query that returns responses required. The unintended consequence of this "creativity" is a degradation of the benefit the `noun/verb` convention benefit created. This also makes versioning and syntax errors a greater problem for Developers to manage.
 
+Example [here](https://github.com/rodriggj/gRPC_demo/issues/2)
+
+--------
 
 ## So is there an alternative to REST? 
 
