@@ -24,9 +24,9 @@ Javascript Object Notation, otherwise known as _JSON_, was leveraged as a payloa
 
 So if REST solved all these problems, and is so much better than its predecessor then, the obvious question is...
 
->  Why are you not writing your API in REST?
+>  Why are you not writing your API using the REST convention?
 
-The answer is because, while REST does solve many problems it also has limitations. 
+The answer is because, while REST does solve many problems __it also has limitations__. 
 
 1. _REST is "Chatty"_
 
@@ -34,7 +34,7 @@ Because of the REST-ful convention to identify endpoints by Resource (aka `noun`
 
 2. _REST introduces a need for "middleware"_
 
-Aside from being _chatty_ another limitation to REST is that the multiple resource calls often require some logic to reconstruct the response needed for the consuming application. This introduces the need for some form of `middleware` or `computational layer` that is used to deserialize payloads, execute data transformation, manage the life-cycle of the data (do you retain for error-handling or purge immediately), etc. in order to construct the appropriate data schema that the consuming entity requires. This middleware introduces security & compliance implications (e.g. Personal Identifiable Information (PAN)), storage & compute implications, and a scope of work that needs to be designed, built, deployed, and maintained. 
+Aside from being _chatty_ another limitation to REST is that the multiple resource calls often require some logic to construct the response needed for the consuming application. This introduces the need for some form of `middleware` or `computational layer` that is used to deserialize payloads, execute data transformation, manage the life-cycle of the data (do you retain for error-handling or purge immediately), etc. in order to construct the appropriate data schema that the consuming entity requires. This middleware introduces security & compliance implications (e.g. Personal Identifiable Information (PAN)), storage & compute implications, and a scope of work that needs to be designed, built, deployed, and maintained. 
 
 3. _REST endpoints can become complex_
 
