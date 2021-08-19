@@ -1,6 +1,6 @@
 # grpc 
 
-## Problem It solves for...
+## What do you have today?
 
 If you are building an API or engaging with stakeholders about an existing API, it is widely adopted, perhaps even assumed that the API is `REST-ful`.  
 
@@ -50,7 +50,13 @@ Example [here](https://github.com/rodriggj/gRPC_demo/issues/2)
 
 Absolutely. In fact there are several, but the alternative that is the subject of this write-up is [gRPC](https://grpc.io/). 
 
-> So what is gRPC? And why is it an alternative to REST? 
+> So what is gRPC? 
 
 
+## What benefit do you gain? 
 
+## Does Tyk support grpc? 
+
+## Frequently Asked Questions (FAQs)
+
+## Get in touch with...
