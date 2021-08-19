@@ -28,9 +28,9 @@ So if REST solved all these problems, and is so much better than its predecessor
 
 The answer is because, while REST does solve many problems __it also has limitations__. 
 
-1. _REST is "Chatty"_
+1. _REST is "Chatty" and introduces "Over-Exposure"_
 
-Because of the REST-ful convention to identify endpoints by Resource (aka `noun`), in a highly interactive use-case (e.g think Newsfeed or Blog Page) where multiple nouns have `associations`, `composition`, and `dependencies`; a Developer will have to make mulitple calls to consume the data required. These mulitple calls introduce bandwidth constraints, throttling limits, scope management determining if the consumer is even authorized to make the needed calls, and in summary becomes very difficult to manage. 
+Because of the REST-ful convention to identify endpoints by Resource (aka `noun`), in a highly interactive use-case (e.g think Newsfeed or Blog Page) where multiple nouns have `associations`, `composition`, and `dependencies`; a Developer will have to make mulitple calls to consume the data required. These mulitple calls introduce bandwidth constraints, throttling limits, endpoint scope management, and in summary becomes very difficult to manage. An additional and __VERY IMPORTANT__ reason why this "chatty" characteristic is _sub-optimal_ is that it `exposes` data that the consumer __did not need!__ Making multiple calls to various endpoints returns __ALL__ the data of the dependency resources. This is expensive; both on the compute resources and on the risk of exposing data that was not needed by the consumer. 
 
 2. _REST introduces a need for "middleware"_
 
@@ -39,4 +39,11 @@ Aside from being _chatty_ another limitation to REST is that the multiple resour
 3. _REST endpoints can become complex_
 
 To overcome the multiple request problem, and the middleware problem, Developers can get very creative with the URL endpoint construction. Developers will utilize resource paths that blend multiple resources (e.g. Users & Posts) query parameters to execute a query that returns responses required. The unintended consequence of this "creativity" is a degradation of the benefit the `noun/verb` convention benefit created. This also makes versioning and syntax errors a greater problem for Developers to manage.
+
+
+## So is there an alternative to REST? 
+
+Absolutely. In fact there are several, but the alternative that is the subject of this write-up is __gRPC__. 
+
+> So what is gRPC? And why is it an alternative to REST? 
 
