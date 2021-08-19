@@ -12,6 +12,6 @@ Prior to REST, `SOAP`, `XML`, and other contracts were often very complicated bo
 
 2. _provided an intuitive convention_
 
-REST-ful resources by convention followed a `noun` <small>(URL endpint)</small> / `verb` <small>(HTTP Method)</small> structure that helped enable Developers consuming your API to understand and intuatively navigate the API documenation so they could collect/use the data they needed. 
+REST-ful resources by convention followed a `noun` _(URL endpoint)_ / `verb` _(HTTP Method)_ structure that helped enable Developers consuming your API to understand and intuatively navigate the API so they could collect/use the data they needed. 
 
 <p align="center"><img src="https://user-images.githubusercontent.com/8760590/130133350-97feecb8-f59b-4978-ae1d-f5badb321b7d.png" width="450"/></p>
