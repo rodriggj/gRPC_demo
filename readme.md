@@ -30,7 +30,7 @@ The answer is because, while REST does solve many problems it also has limitatio
 
 1. _REST is "Chatty"_
 
-Because of the singularity of the REST-ful convention to identify endpoints by Resource (aka `noun`) in a highly interactive use case where multiple nouns have `associations`, `composition`, and `dependencies`, a Developer will have to make mulitple calls, to collect the associated data required. These mulitple calls introduce bandwidth constraints, throttling limits, scope management determining if the consumer is even authorized to make the needed calls, and in summary becomes very difficult to manage. 
+Because of the REST-ful convention to identify endpoints by Resource (aka `noun`), in a highly interactive use-case (e.g think Newsfeed or Blog Page) where multiple nouns have `associations`, `composition`, and `dependencies`; a Developer will have to make mulitple calls to consume the data required. These mulitple calls introduce bandwidth constraints, throttling limits, scope management determining if the consumer is even authorized to make the needed calls, and in summary becomes very difficult to manage. 
 
 2. _REST introduces a need for "middleware"_
 
