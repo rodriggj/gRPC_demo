@@ -48,7 +48,7 @@ Example [here](https://github.com/rodriggj/gRPC_demo/issues/2)
 
 ## So is there an alternative to REST? 
 
-Absolutely. In fact there are several, but the alternative that is the subject of this write-up is __gRPC__. 
+Absolutely. In fact there are several, but the alternative that is the subject of this write-up is [gRPC](https://grpc.io/). 
 
 > So what is gRPC? And why is it an alternative to REST? 
 
