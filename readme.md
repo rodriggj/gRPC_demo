@@ -52,7 +52,6 @@ Absolutely. In fact there are several, but the alternative that is the subject o
 
 > So what is gRPC? 
 
-
 ## What benefit do you gain? 
 
 ## Does Tyk support grpc? 
