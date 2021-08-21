@@ -201,3 +201,11 @@ function main() {
 
 main()
 ```
+
+14. Now we should be able to run the Server without error. 
+
+```javascript 
+node server/index.js
+
+// Server is up and running...
+```
