@@ -91,7 +91,7 @@ If you open these files you will see `GENERATED CODE -- DO NOT EDIT` comments ab
 We will being by configuring our `server`. You should still be in the `/server` directory but if not, nav there now, and create a new file called `index.js`
 
 ```javascript
-code index.js
+code server/index.js
 ```
 
 9. We need start with some boilerplate script. We need to create a `main` function and invoke `main()`; we'll populate the function later. And we need to instantiate a `Server` Object using the `grpc` package we installed previously; so we need to require in this module.
