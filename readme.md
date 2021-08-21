@@ -8,9 +8,9 @@
 - [ ] (Optional) Configure the VS Code Editor
     + Install package `vscode-proto3`
 
-### First Unary API 
+------
 
-Steps: 
+### Configure Directory Structure & Initiate Project
 1. Open a terminal and verify you have `nodejs` installed. If not install it (see _Environment Setup_ above)
 
 ```javascript
@@ -34,11 +34,17 @@ npm init -y
 
 4. We will need to Install a few NPM packages to manage our grpc commands. We will install `grpc-tools`, `google-protobuf`, and `grpc`
 ```javascript
-npm i -g install grpc-tools google-protobuf grpc
-//or 
 npm i install grpc-tools google-protobuf grpc --save
+
+//or if you want to install globally without entering dependencies on package.json file ...
+
+npm i -g install grpc-tools google-protobuf grpc
 ```
 > It is debatable whether you need to install these tools at a global level (e.g. `-g` flag) versus the root directory of your project. Your choice. If you install at global level you will not see your dependencies appear in the package.json file, and you do not need the `--save` flag. If you want the package.json to contain your dependencies, use the `--save` flag. You can verify that the package installation was completed by opening your `package.json` file and viewing the `dependencies` node. 
+
+------
+
+### Code your first protobuf
 
 5. Within the `protos` dir, create a file called `greet.proto`
 ```javascript 
@@ -87,6 +93,10 @@ protoc -I=. ./protos/greet.proto \
 If you open these files you will see `GENERATED CODE -- DO NOT EDIT` comments above the code that was generated for you by the `grpc plugins` you installed. 
 
 8. Now that our code is generated for our API, we now need to configure our front-end `client` and our back-end `server` to utilize the code grpc generated for us. Recall that in a `Unary` grpc deployment model, a client side application will submit a `request` to our server which will provide a `response` just like typical SOAP or REST call would perform. 
+
+------
+
+### Code your Server
 
 We will being by configuring our `server`. You should still be in the `/server` directory but if not, nav there now, and create a new file called `index.js`
 
@@ -209,3 +219,9 @@ node server/index.js
 
 // Server is up and running...
 ```
+
+-------
+
+### Code the Client
+
+
