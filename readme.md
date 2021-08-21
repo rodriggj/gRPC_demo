@@ -126,8 +126,8 @@ function main() {
 11. Import the `protos` files that were generated for the Greet API. On the `index.js` file, at the very top enter these two(2) _require_ statements. Here we assign the `greet_pb` file to `greets` and the `service` variable will be assigned the `greet_grpc_pb` file. 
 
 ```javascript 
-var greets = require('./server/protos/greet_pb')
-var service = require('./server/protos/greet_grpc_pb')
+var greets = require('./protos/greet_pb')
+var service = require('./protos/greet_grpc_pb')
 ```
 
 12. Now we need to implement the `rpc` function. Under the _require_ statements, and above the `main()` function enter the code below. 
@@ -177,8 +177,8 @@ main()
 Your completed `index.js` file should look like this: 
 
 ```javascript 
-var greets = require('./server/protos/greet_pb')
-var service = require('./server/protos/greet_grpc_pb')
+var greets = require('./protos/greet_pb')
+var service = require('./protos/greet_grpc_pb')
 var grpc = require('grpc');
 
 function greet(res, cb) {
