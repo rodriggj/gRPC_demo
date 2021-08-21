@@ -123,23 +123,14 @@ function main() {
 
 > __NOTE:__ If you attempt to run the `index.js` file right now, you will get an error, `Error: Cannot find module './server/protos/greet_pb'`. This is because we need to import the generated code the the grpc creaeted for us.
 
-11. Import the `protos` files that were generated for the Greet API. Here we assign the `greet_pb` file to `greets` and the `service` variable will be assigned the `greet_grpc_pb` file. 
+11. Import the `protos` files that were generated for the Greet API. On the `index.js` file, at the very top enter these two(2) _require_ statements. Here we assign the `greet_pb` file to `greets` and the `service` variable will be assigned the `greet_grpc_pb` file. 
 
 ```javascript 
-// Import in the 2 proto files and the generated code
 var greets = require('./server/protos/greet_pb')
 var service = require('./server/protos/greet_grpc_pb')
-
-var grpc = require('grpc');
-
-function main() {
-    //...
-}
-
-main()
 ```
 
-12. Now we need to implement the `rpc` function. 
+12. Now we need to implement the `rpc` function. Under the _require_ statements, and above the `main()` function enter the code below. 
 
 First we need to creat a function `greet()`, and pass in 2 arguments, 1. `res` & 2. `cb`. The `res` arguement is a placeholder for the API "response" data that is returned from the `GreetResponse` Object that was created by grpc. This argument can be named whatever you like. The `cb` argument is a standard callback function. 
 
@@ -148,11 +139,6 @@ Within the `greet()` function we will want to reference the code that grpc creat
 Finally we need to implement a callback method to call the `greet()` function we just created. 
 
 ```javascript 
-var greets = require('./server/protos/greet_pb')
-var service = require('./server/protos/greet_grpc_pb')
-var grpc = require('grpc');
-
-/* Implement the greet RPC method. */ 
 function greet(res, cb) {
     var greeting = new greets.GreetRepsonse()
 
@@ -162,12 +148,6 @@ function greet(res, cb) {
 
     cb(null, greeting)
 }
-
-function main(){
-    //...
-}
-
-main()
 ```
 
 > _NOTE_: The function name `greet()` function in the index.js file needs to be the same as the name of the Object that is being exported in the `greet_grpc_pb.js` file. 
@@ -176,17 +156,14 @@ main()
 
 13. The last thing we have to do with this file is leverage the `Service` that was created by grpc. To do this we need to register this service with our `main()` method. We need to do this so grpc knows _what_ service to use when it implements the RPC method we just configured.
 
-First we want to call the `server` Object and leverage the `addService()` method. We will pass the `addService()` method 2 arguements 1. we will call `service` which referes to the code generated from the `greet_grpc_pb` file, and call the service that was created in that file. (See diagram below).
+In the `main()` function in the `index.js` file, under the line that created the Server object, enter the following line of code. 
+
+First we want to call the `server` Object and leverage the `addService()` method. We will pass the `addService()` method two(2) arguements 1.the first arguement references the `service` variable we created which was the output from the `greet_grpc_pb.js` file. Within this file is the output of the grpc generated code (aka our API, which was provided a name by the grpc plugin, _GreetServiceService_. (see diagram below). This is the service which will execute our Greet function we just created. 2. the second arguement is letting the _GreetServiceServic_ know what we want to register with it, and in this case it is the _greet_ function we just created so we will pass it this function as an Object with key:value notation. It is convention that the key & value are the same. 
 
 ```javascript 
-var greets = require('./server/protos/greet_pb')
-var service = require('./server/protos/greet_grpc_pb')
-
-//...
-
 function main(){
-    var server = new grpc.Server()
-
+    //var server = new grpc.Server()
+    
     server.addService(service.GreetServiceService,{greet:greet})
     
     //...
