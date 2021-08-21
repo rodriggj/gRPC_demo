@@ -34,9 +34,9 @@ npm init -y
 
 4. We will need to Install a few NPM packages to manage our grpc commands. We will install `grpc-tools`, `google-protobuf`, and `grpc`
 ```javascript
-node i -g install grpc-tools google-protobuf grpc
+npm i -g install grpc-tools google-protobuf grpc
 //or 
-node i install grpc-tools google-protobuf grpc --save
+npm i install grpc-tools google-protobuf grpc --save
 ```
 > It is debatable whether you need to install these tools at a global level (e.g. `-g` flag) versus the root directory of your project. Your choice. If you install at global level you will not see your dependencies appear in the package.json file, and you do not need the `--save` flag. If you want the package.json to contain your dependencies, use the `--save` flag. You can verify that the package installation was completed by opening your `package.json` file and viewing the `dependencies` node. 
 
