@@ -11,22 +11,15 @@
 ### First Unary API 
 
 Steps: 
-1. Open a terminal and verify you have `nodejs` installed 
+1. Open a terminal and verify you have `nodejs` installed. If not install it (see _Environment Setup_ above)
+
 ```javascript
 node --version
 
 // v16.6.1
 ```
 
-2. We will need to Install a few NPM packages to manage our grpc commands. We will install `grpc-tools`, `google-protobuf`, and `grpc`
-```javascript
-node i -g install grpc-tools google-protobuf grpc
-//or 
-node i install grpc-tools google-protobuf grpc --save
-```
-> It is debatable whether you need to install these tools at a global level (e.g. `-g` flag) versus the root directory of your project. Your choice. If you install at global level you will not see your dependencies appear in the package.json file, and you do not need the `--save` flag. If you want the package.json to contain your dependencies, use the `--save` flag. You can verify that the package installation was completed by opening your `package.json` file and viewing the `dependencies` node. 
-
-3. Create directory structure for code
+2. Create directory structure for code
 ```javascript 
 cd ~/Desktop
 mkdir grpc-demo
@@ -34,10 +27,18 @@ mkdir grpc-demo/protos grpc-demo/client grpc-demo/server
 cd grpc-demo
 ```
 
-4. Initiate the nodejs project, which will create your `package.json` file
+3. Initiate the nodejs project, which will create your `package.json` file
 ```javascript 
 npm init -y
 ```
+
+4. We will need to Install a few NPM packages to manage our grpc commands. We will install `grpc-tools`, `google-protobuf`, and `grpc`
+```javascript
+node i -g install grpc-tools google-protobuf grpc
+//or 
+node i install grpc-tools google-protobuf grpc --save
+```
+> It is debatable whether you need to install these tools at a global level (e.g. `-g` flag) versus the root directory of your project. Your choice. If you install at global level you will not see your dependencies appear in the package.json file, and you do not need the `--save` flag. If you want the package.json to contain your dependencies, use the `--save` flag. You can verify that the package installation was completed by opening your `package.json` file and viewing the `dependencies` node. 
 
 5. Within the `protos` dir, create a file called `greet.proto`
 ```javascript 
