@@ -105,7 +105,9 @@ function main() {
 main()
 ```
 
-10. Now we can create/configure our Server. We also want to take our newly creaeted `Server` object and bind it to a `port`. This `bind()` method requires two(2) arguements 1. a string value for the port mapping & 2. credentials. Per the grpc spec, we will pass port `50051`, and in this case we are not passing any credentials so we will use the `createInsecure()` method of the `ServerCredentials` object found in the `grpc` module. Once created we will start the server, and log to the console that it is running. 
+10. Now we can create/configure our Server. The Server Object that we want to create is in the `grpc` module. Import the `grpc` module into your script with the require statement. Now we want to take our newly imported module and create a new `Server` Object. The next step will be to bind the Server to a `port`. 
+
+This `bind()` method requires two(2) arguements 1. a string value for the port mapping & 2. credentials. Per the grpc spec, we will pass port `50051`, and in this case we are not passing any credentials so we will use the `createInsecure()` method of the `ServerCredentials` object found in the `grpc` module. Once created we will start the server, and log to the console that it is running. 
 
 ```javascript
 var grpc = require('grpc');
@@ -125,16 +127,14 @@ main()
 11. Import the `protos` files that were generated for the Greet API. Here we assign the `greet_pb` file to `greets` and the `service` variable will be assigned the `greet_grpc_pb` file. 
 
 ```javascript 
+// Import in the 2 proto files and the generated code
 var greets = require('./server/protos/greet_pb')
 var service = require('./server/protos/greet_grpc_pb')
 
 var grpc = require('grpc');
 
 function main() {
-    var server = new grpc.Server()
-    server.bind("127.0.0.1:50051", grpc.ServerCredentials.createInsecure())
-    server.start()
-    console.log('Server is up and running...')
+    //...
 }
 
 main()
@@ -142,23 +142,48 @@ main()
 
 12. Now we need to implement the `rpc` function. 
 
+First we need to creat a function `greet()`, and pass in 2 arguments, 1. `res` & 2. `cb`. The `res` arguement is a placeholder for the API "response" data that is returned from the `GreetResponse` Object that was created by grpc. This argument can be named whatever you like. The `cb` argument is a standard callback function. 
+
+Within the `greet()` function we will want to reference the code that grpc created for us, specifically the `GreetResponse` Object that was created. We will bind this reference to the var `greeting`. Now we can call the method created for us by grpc called, `setResult()`. This method, can be found in the `greet_pb.js` file. Within the `setResult()` method, we can use our other arguement `res`, which contains the data from the API response, and call the `getter` methods that grpc created for us. Specifcally `getFirstname` and `getLastname` which were attributes we defined in our `greet.proto` schema (see Step 6 above).
+
+Finally we need to implement a callback method to call the `greet()` function we just created. 
+
+```javascript 
+var greets = require('./server/protos/greet_pb')
+var service = require('./server/protos/greet_grpc_pb')
+var grpc = require('grpc');
+
+/* Implement the greet RPC method. */ 
+function greet(res, cb) {
+    var greeting = new greets.GreetRepsonse()
+
+    greeting.setResult(
+        `Hello ${res.getGreeting.getFirstname()} ${res.getGreeting.getLastname()}!`
+    )
+
+    cb(null, greeting)
+}
+
+function main(){
+    //...
+}
+
+main()
+```
+
+> _NOTE_: The function name `greet()` function in the index.js file needs to be the same as the name of the Object that is being exported in the `greet_grpc_pb.js` file. 
+
+<p align="center"><img src="https://user-images.githubusercontent.com/8760590/130302237-4735c1cf-8e5e-4667-9fc7-663e26157114.png" width="450"/></p>
+
+13. The last thing we have to do with this file is leverage the `Service` that was created by grpc. To do this we need to register this service with our `main()` method. We need to do this so grpc knows _what_ service to use when it implements the RPC method we just configured.
+
+First we want to call the `server` Object and leverage the `addService()` method. We will pass the `addService()` method 2 arguements 1. we will call `service` which referes to the code generated from the `greet_grpc_pb` file, and call the service that was created in that file. (See diagram below).
+
 ```javascript 
 var greets = require('./server/protos/greet_pb')
 var service = require('./server/protos/greet_grpc_pb')
 
-var grpc = require('grpc');
-
-/*
-    Implements the greet RPC method.
-*/ 
-
-function greet(call, callback) {
-    var greeting = new greets.GreetResponse()
-    greeting.setResult(
-        "Hello " + call.request.getGreeting().getFirstName()
-    )
-    callback(null,greeting)
-}
+//...
 
 function main(){
     var server = new grpc.Server()
@@ -171,6 +196,4 @@ function main(){
 main()
 ```
 
-> _NOTE_: The function name `greet()` function in the index.js file needs to be the same as the name of the Object that is being exported in the `greet_grpc_pb.js` file. 
-
-<p align="center"><img src="https://user-images.githubusercontent.com/8760590/130302237-4735c1cf-8e5e-4667-9fc7-663e26157114.png" width="450"/></p>
+<p align="center"><img src="https://user-images.githubusercontent.com/8760590/130307287-9dc9d1fb-d19c-45d8-bee5-95e1f7e19e53.png" width="450"/></p>

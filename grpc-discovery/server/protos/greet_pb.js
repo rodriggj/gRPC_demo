@@ -82,7 +82,7 @@ if (goog.DEBUG && !COMPILED) {
   proto.greet.GreetResponse.displayName = 'proto.greet.GreetResponse';
 }
 
-
+  
 
 if (jspb.Message.GENERATE_TO_OBJECT) {
 /**
