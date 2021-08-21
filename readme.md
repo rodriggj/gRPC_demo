@@ -173,3 +173,31 @@ main()
 ```
 
 <p align="center"><img src="https://user-images.githubusercontent.com/8760590/130307287-9dc9d1fb-d19c-45d8-bee5-95e1f7e19e53.png" width="450"/></p>
+
+Your completed `index.js` file should look like this: 
+
+```javascript 
+var greets = require('./server/protos/greet_pb')
+var service = require('./server/protos/greet_grpc_pb')
+var grpc = require('grpc');
+
+function greet(res, cb) {
+    var greeting = new greets.GreetRepsonse()
+
+    greeting.setResult(
+        "Hello" + res.request.getGreeting().getFirstname()
+    )
+
+    cb(null, greeting)
+}
+
+function main() {
+    var server = new grpc.Server()
+    server.addService(service.GreetServiceService,{greet:greet})
+    server.bind("127.0.0.1:50051", grpc.ServerCredentials.createInsecure())
+    server.start()
+    console.log('Server is up and running...')
+}
+
+main()
+```
