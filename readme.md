@@ -143,7 +143,7 @@ function greet(res, cb) {
     var greeting = new greets.GreetRepsonse()
 
     greeting.setResult(
-        `Hello ${res.getGreeting.getFirstname()} ${res.getGreeting.getLastname()}!`
+        "Hello" + res.request.getGreeting().getFirstname()
     )
 
     cb(null, greeting)
