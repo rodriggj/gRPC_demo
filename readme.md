@@ -106,21 +106,19 @@ function main() {
 main()
 ```
 
-10. Now we can create/configure our Server. The Server Object that we want to create is in the `grpc` module. Import the `grpc` module into your script with the require statement. Now we want to take our newly imported module and create a new `Server` Object. The next step will be to bind the Server to a `port`. 
+10. Now we can create/configure our Server. Replace the `main()` function already on the `index.js` file enter the code below.
+
+The Server Object that we want to create is in the `grpc` module. Import the `grpc` module into your script with the require statement. Now we want to take our newly imported module and create a new `Server` Object. The next step will be to bind the Server to a `port`. 
 
 This `bind()` method requires two(2) arguements 1. a string value for the port mapping & 2. credentials. Per the grpc spec, we will pass port `50051`, and in this case we are not passing any credentials so we will use the `createInsecure()` method of the `ServerCredentials` object found in the `grpc` module. Once created we will start the server, and log to the console that it is running. 
 
 ```javascript
-var grpc = require('grpc');
-
 function main() {
     var server = new grpc.Server()
     server.bind("127.0.0.1:50051", grpc.ServerCredentials.createInsecure())
     server.start()
     console.log('Server is up and running...')
 }
-
-main()
 ```
 
 > __NOTE:__ If you attempt to run the `index.js` file right now, you will get an error, `Error: Cannot find module './server/protos/greet_pb'`. This is because we need to import the generated code the the grpc creaeted for us.
