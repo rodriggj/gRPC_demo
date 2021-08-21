@@ -187,10 +187,10 @@ var service = require('./server/protos/greet_grpc_pb')
 
 function main(){
     var server = new grpc.Server()
+
     server.addService(service.GreetServiceService,{greet:greet})
-    server.bind("127.0.0.1:50051", grpc.ServerCredentials.createInsecure())
-    server.start()
-    console.log(`Server is up and running on port: 127.0.0.1:50051`)
+    
+    //...
 }
 
 main()
