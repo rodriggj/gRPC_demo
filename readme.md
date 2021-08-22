@@ -224,4 +224,9 @@ node server/index.js
 
 ### Code the Client
 
+> _NOTE:_ If you left your `server` terminal running, you will need to create a new terminal window to complete the remaining steps below. Otherwise quite the `server` by pressing `Ctrl+ C` to quite and complete the remaining steps in the same terminal window. 
 
+1. 
+
+```javascript 
+code client/
